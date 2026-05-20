@@ -1,55 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
+
 <meta charset="utf-8">
+
+<title>3D Cultural Heritage Viewer</title>
 
 <script type="module"
 src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
 </script>
 
 <style>
+
 body {
   margin: 0;
+  display: flex;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+/* left-side 3D model viewer */
+
+#viewer-area {
+  width: 70%;
+  height: 100%;
+  background: #222;
 }
 
 model-viewer {
-  width: 100vw;
-  height: 90vh;
+  width: 100%;
+  height: 100%;
 }
+
+/* right-side description */
+
+#info-area {
+  width: 30%;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
 </style>
+
 </head>
 
 <body>
 
+<!-- left side -->
+
+<div id="viewer-area">
+
+<model-viewer
+id="viewer"
+
+src="ea510ce736104fbbb5f63a47f235a4a3.glb"
+
+camera-controls
+auto-rotate
+shadow-intensity="1"
+
+camera-orbit="45deg 75deg 4m"
+
+field-of-view="30deg"
+
+ar>
+
+</model-viewer>
+
+</div>
+
+<!-- right side -->
+
+<div id="info-area">
+
 <select id="modelSelect">
 
-<option value="ea510ce736104fbbb5f63a47f235a4a3.glb">
+<option value="ea510ce736104fbbb5f63a47f235a4a3">
 ShioyaKinseiJinja-Sekibo
 </option>
 
-<option value="64b4fa034a8d4a3fb39a68a894889502.glb">
+<option value="64b4fa034a8d4a3fb39a68a894889502">
 Dounomae-Sekibo
 </option>
 
 </select>
 
-<model-viewer
-id="viewer"
-src="ea510ce736104fbbb5f63a47f235a4a3.glb"
-camera-controls
-auto-rotate>
-</model-viewer>
+<div id="description">
+
+<h2>ShioyaKinseiJinja-Sekibo/ 塩屋金精神社遺跡出土石棒</h2>
+
+<p>
+サンプル
+</p>
+
+<p>
+Sketchfabリンク
+</p>
+
+</div>
+
+</div>
 
 <script>
 
+/* モデル情報 */
+
+const models = {
+
+  ShioyaKinseiJinja-Sekibo: {
+
+    file: "ea510ce736104fbbb5f63a47f235a4a3.glb",
+
+    title: "ShioyaKinseiJinja-Sekibo",
+
+    text: `
+    <p>
+    サンプル
+    </p>
+
+    <p>
+    Sketchfabリンク
+    </p>
+    `
+
+  },
+
+  Dounomae-Sekibo: {
+
+    file: "64b4fa034a8d4a3fb39a68a894889502.glb",
+
+    title: "Dounomae-Sekibo",
+
+    text: `
+    <p>
+    サンプル
+    </p>
+    `
+
+  },
+
+};
+
+/* 要素取得 */
+
 const viewer =
-document.getElementById('viewer');
+document.getElementById("viewer");
 
-document.getElementById('modelSelect')
-.addEventListener('change', function() {
+const select =
+document.getElementById("modelSelect");
 
-viewer.src = this.value;
+const description =
+document.getElementById("description");
+
+/* 切替処理 */
+
+select.addEventListener("change", function() {
+
+  const selected =
+  models[this.value];
+
+  /* モデル変更 */
+
+  viewer.src =
+  selected.file;
+
+  /* 解説変更 */
+
+  description.innerHTML =
+  `<h2>${selected.title}</h2>${selected.text}`;
 
 });
 
