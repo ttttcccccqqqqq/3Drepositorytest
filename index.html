@@ -2,9 +2,7 @@
 <html lang="ja">
 
 <head>
-
 <meta charset="utf-8">
-
 <title>3D Cultural Heritage Viewer</title>
 
 <script type="module"
@@ -12,15 +10,12 @@ src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
 </script>
 
 <style>
-
 body {
   margin: 0;
   display: flex;
   height: 100vh;
   font-family: sans-serif;
 }
-
-/* left-side 3D model viewer */
 
 #viewer-area {
   width: 70%;
@@ -33,8 +28,6 @@ model-viewer {
   height: 100%;
 }
 
-/* right-side description */
-
 #info-area {
   width: 30%;
   padding: 20px;
@@ -43,178 +36,265 @@ model-viewer {
   box-sizing: border-box;
 }
 
+label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
 select {
   width: 100%;
   padding: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   font-size: 16px;
 }
 
 h2 {
-  margin-top: 0;
+  margin-top: 20px;
 }
 
-</style>
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
 
+th {
+  width: 35%;
+  text-align: left;
+  vertical-align: top;
+  padding: 6px;
+  background: #e0e0e0;
+}
+
+td {
+  padding: 6px;
+  background: #ffffff;
+}
+
+p {
+  line-height: 1.6;
+}
+</style>
 </head>
 
 <body>
 
-<!-- left side -->
-
 <div id="viewer-area">
-
-<model-viewer
-id="viewer"
-
-src="models/ea510ce736104fbbb5f63a47f235a4a3.glb"
-
-camera-controls
-auto-rotate
-shadow-intensity="1"
-
-camera-orbit="45deg 75deg 6m"
-
-field-of-view="30deg"
-
-ar>
-
-</model-viewer>
-
+  <model-viewer
+    id="viewer"
+    src=""
+    camera-controls
+    auto-rotate
+    shadow-intensity="1"
+    camera-orbit="45deg 75deg 6m"
+    field-of-view="30deg"
+    ar>
+  </model-viewer>
 </div>
-
-<!-- right side -->
 
 <div id="info-area">
 
-<select id="modelSelect">
+  <label for="languageSelect">Language</label>
+  <select id="languageSelect">
+    <option value="ja">日本語</option>
+    <option value="en">English</option>
+  </select>
 
-<option value="ea510ce736104fbbb5f63a47f235a4a3">
-ShioyaKinseiJinja-Sekibo
-</option>
+  <label for="modelSelect">Model</label>
+  <select id="modelSelect"></select>
 
-<option value="64b4fa034a8d4a3fb39a68a894889502">
-Dounomae-Sekibo
-</option>
-
-</select>
-
-<div id="description">
-
-<h2>ShioyaKinseiJinja-Sekibo/ 塩屋金精神社遺跡出土石棒</h2>
-
-<p>
-Model1. ShioyaKinseiJinja-Sekibo<br>
-Sekibo (Phallic Stone), Jomon Age, ShioyaKinseiJinja Site, Hida City, Gifu, Japan<br>
-岐阜県飛騨市宮川町塩屋金精神社遺跡出土石棒、縄文時代<br>
-<hr>  
-Fig.79-11 from *Excavation report of ShioyaKinseiJinja Site Loc.A*, Gifu Prefecture and Miyagawa Village Board of Education, 1996<br>
-<hr>
-岐阜県・宮川村教育委員会2000『塩屋金清神社遺跡（Ａ地点）発掘調査報告書』第79図11掲載<br>
-<hr>
-From the collection of Hida-Miyagawa Archaeology anf Folklore Museum<br>
-飛騨市飛騨みやがわ考古民俗館所蔵・展示<br>
-</p>
-<hr class="double-hr">
-<p>
-<a href="https://sketchfab.com/3d-models/2000a79-11-ea510ce736104fbbb5f63a47f235a4a3">Original Data</a> View on Sketchfab
-</p>
-
-</div>
+  <div id="description">
+    <p>CSVデータを読み込み中です。</p>
+  </div>
 
 </div>
 
 <script>
+const viewer = document.getElementById("viewer");
+const modelSelect = document.getElementById("modelSelect");
+const languageSelect = document.getElementById("languageSelect");
+const description = document.getElementById("description");
 
-/* description */
+let models = [];
+let currentLanguage = "ja";
 
-const models = {
+fetch("DDB.csv")
+  .then(response => {
+    if (!response.ok) {
+      throw new Error("CSV file not found");
+    }
+    return response.text();
+  })
+  .then(csvText => {
+    models = parseCSV(csvText);
+    setupModelSelector(models);
 
-  "ea510ce736104fbbb5f63a47f235a4a3": {
+    if (models.length > 0) {
+      showModel(models[0]);
+    } else {
+      description.innerHTML = "<p>CSVにモデルデータがありません。</p>";
+    }
+  })
+  .catch(error => {
+    console.error("CSV loading error:", error);
+    description.innerHTML = "<p>CSVデータを読み込めませんでした。</p>";
+  });
 
-    file: "models/ea510ce736104fbbb5f63a47f235a4a3.glb",
+function setupModelSelector(models) {
+  modelSelect.innerHTML = "";
 
-    title: "ShioyaKinseiJinja-Sekibo",
+  models.forEach(model => {
+    const option = document.createElement("option");
+    option.value = model.id;
+    option.textContent = model.label || model.id;
+    modelSelect.appendChild(option);
+  });
+}
 
-    text: `
+function showModel(model) {
+  viewer.src = model.file;
+
+  const lang = currentLanguage;
+  const suffix = "_" + lang;
+
+  description.innerHTML = `
+    <h2>${escapeHTML(model["title" + suffix])}</h2>
+
+    <table>
+      <tr>
+        <th>${label("Object type", "種別")}</th>
+        <td>${escapeHTML(model["object_type" + suffix])}</td>
+      </tr>
+      <tr>
+        <th>${label("Period", "時代")}</th>
+        <td>${escapeHTML(model["period" + suffix])}</td>
+      </tr>
+      <tr>
+        <th>${label("Site", "遺跡")}</th>
+        <td>${escapeHTML(model["site" + suffix])}</td>
+      </tr>
+      <tr>
+        <th>${label("Location", "所在地")}</th>
+        <td>
+          ${escapeHTML(model["city" + suffix])},
+          ${escapeHTML(model["prefecture" + suffix])},
+          ${escapeHTML(model["country" + suffix])}
+        </td>
+      </tr>
+      <tr>
+        <th>${label("Report", "報告書")}</th>
+        <td>${escapeHTML(model["report" + suffix])}</td>
+      </tr>
+      <tr>
+        <th>${label("Figure", "掲載図")}</th>
+        <td>${escapeHTML(model.figure)}</td>
+      </tr>
+      <tr>
+        <th>${label("Institution", "所蔵・展示")}</th>
+        <td>${escapeHTML(model["institution" + suffix])}</td>
+      </tr>
+    </table>
+
+    <p>${escapeHTML(model["description" + suffix])}</p>
+
     <p>
-Sekibo (Phallic Stone), Jomon Age, ShioyaKinseiJinja Site, Hida City, Gifu, Japan<br>
-岐阜県飛騨市宮川町塩屋金精神社遺跡出土石棒、縄文時代<br>
-<hr>
-Fig.79-11 from *Excavation report of ShioyaKinseiJinja Site Loc.A*, Gifu Prefecture and Miyagawa Village Board of Education, 1996<br>
-岐阜県・宮川村教育委員会2000『塩屋金清神社遺跡（Ａ地点）発掘調査報告書』第79図11掲載<br>
-<hr>
-From the collection of Hida-Miyagawa Archaeology anf Folklore Museum<br>
-飛騨市飛騨みやがわ考古民俗館所蔵・展示<br>
+      <a href="${escapeAttribute(model.source_url)}"
+         target="_blank"
+         rel="noopener noreferrer">
+        ${label("Original Data", "元データ")}
+      </a>
     </p>
-<hr class="double-hr">
-    <p>
-    
-<a href="https://sketchfab.com/3d-models/2000a79-11-ea510ce736104fbbb5f63a47f235a4a3">Original Data</a> View on Sketchfab
-    </p>
-    `
+  `;
+}
 
-  },
+modelSelect.addEventListener("change", function() {
+  const selected = models.find(model => model.id === this.value);
 
-  "64b4fa034a8d4a3fb39a68a894889502": {
+  if (!selected) {
+    console.error("Model not found:", this.value);
+    return;
+  }
 
-    file: "models/64b4fa034a8d4a3fb39a68a894889502.glb",
-
-    title: "Dounomae-Sekibo",
-
-    text: `
-    <p>
-Sekibo (Phallic Stone), Jomon Age, Dounomae Site, Hida City, Gifu, Japan<br>
-岐阜県飛騨市宮川町堂ノ前遺跡出土石棒、縄文時代<br>
-<hr>
-Fig.74 from *Excavation report of Dounomae Site*, Miyagawa Village Board of Education, 1996<br>
-宮川村教育委員会1996『堂ノ前遺跡』第74図掲載<br>
-<hr>
-From the collection of Hida-Miyagawa Archaeology anf Folklore Museum<br>
-飛騨市飛騨みやがわ考古民俗館所蔵・展示<br>
-
-    </p>
-<hr class="double-hr">
-    <p>
-
-<a href="https://sketchfab.com/3d-models/199674-64b4fa034a8d4a3fb39a68a894889502)">Original Data</a> View on Sketchfab
-</p>
-    `
-
-  },
-
-};
-
-/* 要素取得 */
-
-const viewer =
-document.getElementById("viewer");
-
-const select =
-document.getElementById("modelSelect");
-
-const description =
-document.getElementById("description");
-
-/* 切替処理 */
-
-select.addEventListener("change", function() {
-
-  const selected =
-  models[this.value];
-
-  /* モデル変更 */
-
-  viewer.src =
-  selected.file;
-
-  /* 解説変更 */
-
-  description.innerHTML =
-  `<h2>${selected.title}</h2>${selected.text}`;
-
+  showModel(selected);
 });
 
+languageSelect.addEventListener("change", function() {
+  currentLanguage = this.value;
+
+  const selected = models.find(model => model.id === modelSelect.value);
+
+  if (!selected) {
+    console.error("Model not found:", modelSelect.value);
+    return;
+  }
+
+  showModel(selected);
+});
+
+function label(en, ja) {
+  return currentLanguage === "ja" ? ja : en;
+}
+
+function parseCSV(text) {
+  const rows = text.trim().split(/\r?\n/);
+  const headers = splitCSVLine(rows[0]).map(h => h.trim());
+
+  return rows.slice(1)
+    .filter(row => row.trim() !== "")
+    .map(row => {
+      const values = splitCSVLine(row);
+      const obj = {};
+
+      headers.forEach((header, index) => {
+        obj[header] = values[index] ? values[index].trim() : "";
+      });
+
+      return obj;
+    });
+}
+
+function splitCSVLine(line) {
+  const result = [];
+  let current = "";
+  let inQuotes = false;
+
+  for (let i = 0; i < line.length; i++) {
+    const char = line[i];
+    const nextChar = line[i + 1];
+
+    if (char === '"' && inQuotes && nextChar === '"') {
+      current += '"';
+      i++;
+    } else if (char === '"') {
+      inQuotes = !inQuotes;
+    } else if (char === "," && !inQuotes) {
+      result.push(current);
+      current = "";
+    } else {
+      current += char;
+    }
+  }
+
+  result.push(current);
+  return result;
+}
+
+function escapeHTML(str) {
+  return String(str || "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function escapeAttribute(str) {
+  return escapeHTML(str);
+}
 </script>
 
 </body>
