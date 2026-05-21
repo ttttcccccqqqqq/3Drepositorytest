@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+
+<meta charset="utf-8">
+
+<title>3D Cultural Heritage Viewer</title>
+
+<script type="module"
+src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+</script>
+
+<style>
+
+body {
+  margin: 0;
+  display: flex;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+/* left-side 3D model viewer */
+
+#viewer-area {
+  width: 70%;
+  height: 100%;
+  background: #222;
+}
+
+model-viewer {
+  width: 100%;
+  height: 100%;
+}
+
+/* right-side description */
+
+#info-area {
+  width: 30%;
+  padding: 20px;
+  overflow-y: auto;
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+
+select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- left side -->
+
+<div id="viewer-area">
+
+<model-viewer
+id="viewer"
+
+src="ea510ce736104fbbb5f63a47f235a4a3.glb"
+
+camera-controls
+auto-rotate
+shadow-intensity="1"
+
+camera-orbit="45deg 75deg 6m"
+
+field-of-view="30deg"
+
+ar>
+
+</model-viewer>
+
+</div>
+
+<!-- right side -->
+
+<div id="info-area">
+
+<select id="modelSelect">
+
+<option value="ea510ce736104fbbb5f63a47f235a4a3">
+ShioyaKinseiJinja-Sekibo
+</option>
+
+<option value="64b4fa034a8d4a3fb39a68a894889502">
+Dounomae-Sekibo
+</option>
+
+</select>
+
+<div id="description">
+
+<h2>ShioyaKinseiJinja-Sekibo/ 塩屋金精神社遺跡出土石棒</h2>
+
+<p>
+Model1. ShioyaKinseiJinja-Sekibo<br>
+Sekibo (Phallic Stone), Jomon Age, ShioyaKinseiJinja Site, Hida City, Gifu, Japan<br>
+岐阜県飛騨市宮川町塩屋金精神社遺跡出土石棒、縄文時代<br>
+<hr>  
+Fig.79-11 from *Excavation report of ShioyaKinseiJinja Site Loc.A*, Gifu Prefecture and Miyagawa Village Board of Education, 1996<br>
+<hr>
+岐阜県・宮川村教育委員会2000『塩屋金清神社遺跡（Ａ地点）発掘調査報告書』第79図11掲載<br>
+<hr>
+From the collection of Hida-Miyagawa Archaeology anf Folklore Museum<br>
+飛騨市飛騨みやがわ考古民俗館所蔵・展示<br>
+</p>
+<hr class="double-hr">
+<p>
+<a href="https://sketchfab.com/3d-models/2000a79-11-ea510ce736104fbbb5f63a47f235a4a3">Original Data</a> View on Sketchfab
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+/* description */
+
+const models = {
+
+  "ea510ce736104fbbb5f63a47f235a4a3": {
+
+    file: "ea510ce736104fbbb5f63a47f235a4a3.glb",
+
+    title: "ShioyaKinseiJinja-Sekibo",
+
+    text: `
+    <p>
+Sekibo (Phallic Stone), Jomon Age, ShioyaKinseiJinja Site, Hida City, Gifu, Japan<br>
+岐阜県飛騨市宮川町塩屋金精神社遺跡出土石棒、縄文時代<br>
+<hr>
+Fig.79-11 from *Excavation report of ShioyaKinseiJinja Site Loc.A*, Gifu Prefecture and Miyagawa Village Board of Education, 1996<br>
+岐阜県・宮川村教育委員会2000『塩屋金清神社遺跡（Ａ地点）発掘調査報告書』第79図11掲載<br>
+<hr>
+From the collection of Hida-Miyagawa Archaeology anf Folklore Museum<br>
+飛騨市飛騨みやがわ考古民俗館所蔵・展示<br>
+    </p>
+<hr class="double-hr">
+    <p>
+    
+<a href="https://sketchfab.com/3d-models/2000a79-11-ea510ce736104fbbb5f63a47f235a4a3">Original Data</a> View on Sketchfab
+    </p>
+    `
+
+  },
+
+  "64b4fa034a8d4a3fb39a68a894889502": {
+
+    file: "64b4fa034a8d4a3fb39a68a894889502.glb",
+
+    title: "Dounomae-Sekibo",
+
+    text: `
+    <p>
+Sekibo (Phallic Stone), Jomon Age, Dounomae Site, Hida City, Gifu, Japan<br>
+岐阜県飛騨市宮川町堂ノ前遺跡出土石棒、縄文時代<br>
+<hr>
+Fig.74 from *Excavation report of Dounomae Site*, Miyagawa Village Board of Education, 1996<br>
+宮川村教育委員会1996『堂ノ前遺跡』第74図掲載<br>
+<hr>
+From the collection of Hida-Miyagawa Archaeology anf Folklore Museum<br>
+飛騨市飛騨みやがわ考古民俗館所蔵・展示<br>
+
+    </p>
+<hr class="double-hr">
+    <p>
+
+<a href="https://sketchfab.com/3d-models/199674-64b4fa034a8d4a3fb39a68a894889502)">Original Data</a> View on Sketchfab
+</p>
+    `
+
+  },
+
+};
+
+/* 要素取得 */
+
+const viewer =
+document.getElementById("viewer");
+
+const select =
+document.getElementById("modelSelect");
+
+const description =
+document.getElementById("description");
+
+/* 切替処理 */
+
+select.addEventListener("change", function() {
+
+  const selected =
+  models[this.value];
+
+  /* モデル変更 */
+
+  viewer.src =
+  selected.file;
+
+  /* 解説変更 */
+
+  description.innerHTML =
+  `<h2>${selected.title}</h2>${selected.text}`;
+
+});
+
+</script>
+
+</body>
+</html>
