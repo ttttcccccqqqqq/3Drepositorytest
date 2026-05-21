@@ -1,10 +1,50 @@
 {\rtf1\ansi\ansicpg932\cocoartf2868
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset134 HiraginoSansGB-W3;}
 {\colortbl;\red255\green255\blue255;}
 {\*\expandedcolortbl;;}
 \paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
-\f0\fs24 \cf0 id,label,file,title_en,title_ja,object_type_en,object_type_ja,period_en,period_ja,site_en,site_ja,city_en,city_ja,prefecture_en,prefecture_ja,country_en,country_ja,report_en,report_ja,figure,institution_en,institution_ja,description_en,description_ja,source_url\
-shioya,ShioyaKinseiJinja-Sekibo,models/ea510ce736104fbbb5f63a47f235a4a3.glb,ShioyaKinseiJinja-Sekibo,\uc0\u22633 \u23627 \u37329 \u31934 \u31070 \u31038 \u36986 \u36321 \u20986 \u22303 \u30707 \u26834 ,Sekibo,\u30707 \u26834 ,Jomon Age,\u32260 \u25991 \u26178 \u20195 ,ShioyaKinseiJinja Site,\u22633 \u23627 \u37329 \u31934 \u31070 \u31038 \u36986 \u36321 ,Hida City,\u39131 \u39464 \u24066 ,Gifu,\u23696 \u38428 ,Japan,\u26085 \u26412 ,"Excavation report of ShioyaKinseiJinja Site Loc.A",\u12302 \u22633 \u23627 \u37329 \u28165 \u31070 \u31038 \u36986 \u36321 \u65288 \u65313 \u22320 \u28857 \u65289 \u30330 \u25496 \u35519 \u26619 \u22577 \u21578 \u26360 \u12303 ,Fig.79-11,Hida-Miyagawa Archaeology and Folklore Museum,\u39131 \u39464 \u24066 \u39131 \u39464 \u12415 \u12420 \u12364 \u12431 \u32771 \u21476 \u27665 \u20439 \u39208 ,"Sekibo from ShioyaKinseiJinja Site, Hida City, Gifu Prefecture.","\u23696 \u38428 \u30476 \u39131 \u39464 \u24066 \u23470 \u24029 \u30010 \u22633 \u23627 \u37329 \u31934 \u31070 \u31038 \u36986 \u36321 \u20986 \u22303 \u12398 \u30707 \u26834 \u12290 ",https://sketchfab.com/3d-models/2000a79-11-ea510ce736104fbbb5f63a47f235a4a3\
-dounomae,Dounomae-Sekibo,models/64b4fa034a8d4a3fb39a68a894889502.glb,Dounomae-Sekibo,\uc0\u22530 \u12494 \u21069 \u36986 \u36321 \u20986 \u22303 \u30707 \u26834 ,Sekibo,\u30707 \u26834 ,Jomon Age,\u32260 \u25991 \u26178 \u20195 ,Dounomae Site,\u22530 \u12494 \u21069 \u36986 \u36321 ,Hida City,\u39131 \u39464 \u24066 ,Gifu,\u23696 \u38428 ,Japan,\u26085 \u26412 ,"Excavation report of Dounomae Site",\u12302 \u22530 \u12494 \u21069 \u36986 \u36321 \u12303 ,Fig.74,Hida-Miyagawa Archaeology and Folklore Museum,\u39131 \u39464 \u24066 \u39131 \u39464 \u12415 \u12420 \u12364 \u12431 \u32771 \u21476 \u27665 \u20439 \u39208 ,"Sekibo from Dounomae Site, Hida City, Gifu Prefecture.","\u23696 \u38428 \u30476 \u39131 \u39464 \u24066 \u23470 \u24029 \u30010 \u22530 \u12494 \u21069 \u36986 \u36321 \u20986 \u22303 \u12398 \u30707 \u26834 \u12290 ",https://sketchfab.com/3d-models/199674-64b4fa034a8d4a3fb39a68a894889502}
+\f0\fs24 \cf0 id,label,file,title_en,title_ja,object_type_en,object_type_ja,period_en,period_ja,site_en,site_ja,city_en,city_ja,prefecture_en,prefecture_ja,country_en,country_ja,report_en,report_ja,figure,institution_en,institution_ja,description_en,description_ja,source_url,lat,lon,zoom\
+shioya,ShioyaKinseiJinja-Sekibo,models/ea510ce736104fbbb5f63a47f235a4a3.glb,ShioyaKinseiJinja-Sekibo,
+\f1 \'89\'63\'ce\'dd\'bd\'f0\'be\'ab\'c9\'f1\'c9\'e7\'df\'7a\'db\'45\'b3\'f6\'cd\'c1\'ca\'af\'b0\'f4
+\f0 ,Sekibo,
+\f1 \'ca\'af\'b0\'f4
+\f0 ,Jomon Age,
+\f1 \'bf\'49\'ce\'c4\'95\'72\'b4\'fa
+\f0 ,ShioyaKinseiJinja Site,
+\f1 \'89\'63\'ce\'dd\'bd\'f0\'be\'ab\'c9\'f1\'c9\'e7\'df\'7a\'db\'45
+\f0 ,Hida City,
+\f1 \'ef\'77\'f2\'6e\'ca\'d0
+\f0 ,Gifu,
+\f1 \'e1\'aa\'b8\'b7
+\f0 ,Japan,
+\f1 \'c8\'d5\'b1\'be
+\f0 ,"Excavation report of ShioyaKinseiJinja Site Loc.A",
+\f1 \'a1\'ba\'89\'63\'ce\'dd\'bd\'f0\'c7\'e5\'c9\'f1\'c9\'e7\'df\'7a\'db\'45\'a3\'a8\'a3\'c1\'b5\'d8\'b5\'e3\'a3\'a9\'b0\'6b\'be\'f2\'d5\'7b\'96\'cb\'88\'f3\'b8\'e6\'95\'f8\'a1\'bb
+\f0 ,Fig.79-11,Hida-Miyagawa Archaeology and Folklore Museum,
+\f1 \'ef\'77\'f2\'6e\'ca\'d0\'ef\'77\'f2\'6e\'a4\'df\'a4\'e4\'a4\'ac\'a4\'ef\'bf\'bc\'b9\'c5\'c3\'f1\'cb\'d7\'f0\'5e
+\f0 ,"Sekibo from ShioyaKinseiJinja Site, Hida City, Gifu Prefecture.","
+\f1 \'e1\'aa\'b8\'b7\'b1\'68\'ef\'77\'f2\'6e\'ca\'d0\'8c\'6d\'b4\'a8\'ee\'ae\'89\'63\'ce\'dd\'bd\'f0\'be\'ab\'c9\'f1\'c9\'e7\'df\'7a\'db\'45\'b3\'f6\'cd\'c1\'a4\'ce\'ca\'af\'b0\'f4\'a1\'a3
+\f0 ",https://sketchfab.com/3d-models/2000a79-11-ea510ce736104fbbb5f63a47f235a4a3,36.39130998401389, 137.18404173771086,16\
+dounomae,Dounomae-Sekibo,models/64b4fa034a8d4a3fb39a68a894889502.glb,Dounomae-Sekibo,
+\f1 \'cc\'c3\'a5\'ce\'c7\'b0\'df\'7a\'db\'45\'b3\'f6\'cd\'c1\'ca\'af\'b0\'f4
+\f0 ,Sekibo,
+\f1 \'ca\'af\'b0\'f4
+\f0 ,Jomon Age,
+\f1 \'bf\'49\'ce\'c4\'95\'72\'b4\'fa
+\f0 ,Dounomae Site,
+\f1 \'cc\'c3\'a5\'ce\'c7\'b0\'df\'7a\'db\'45
+\f0 ,Hida City,
+\f1 \'ef\'77\'f2\'6e\'ca\'d0
+\f0 ,Gifu,
+\f1 \'e1\'aa\'b8\'b7
+\f0 ,Japan,
+\f1 \'c8\'d5\'b1\'be
+\f0 ,"Excavation report of Dounomae Site",
+\f1 \'a1\'ba\'cc\'c3\'a5\'ce\'c7\'b0\'df\'7a\'db\'45\'a1\'bb
+\f0 ,Fig.74,Hida-Miyagawa Archaeology and Folklore Museum,
+\f1 \'ef\'77\'f2\'6e\'ca\'d0\'ef\'77\'f2\'6e\'a4\'df\'a4\'e4\'a4\'ac\'a4\'ef\'bf\'bc\'b9\'c5\'c3\'f1\'cb\'d7\'f0\'5e
+\f0 ,"Sekibo from Dounomae Site, Hida City, Gifu Prefecture.","
+\f1 \'e1\'aa\'b8\'b7\'b1\'68\'ef\'77\'f2\'6e\'ca\'d0\'8c\'6d\'b4\'a8\'ee\'ae\'cc\'c3\'a5\'ce\'c7\'b0\'df\'7a\'db\'45\'b3\'f6\'cd\'c1\'a4\'ce\'ca\'af\'b0\'f4\'a1\'a3
+\f0 ",https://sketchfab.com/3d-models/199674-64b4fa034a8d4a3fb39a68a894889502,36.39112310267425,137.18431510971945,16}
