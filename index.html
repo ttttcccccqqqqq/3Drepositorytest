@@ -230,14 +230,14 @@ function showModel(model) {
         <td>${escapeHTML(model["report" + suffix])}</td>
       </tr>
       <tr>
-        <th>${label("Report Link", "報告書リンク")}</th>
-        <td>${
-          <a href="${escapeAttribute(model.source_url)}"
-         target="_blank"
-         rel="noopener noreferrer">
-        ${label("SiteReportsArchives", "全国遺跡報告総覧")}
-      </a>
-scapeHTML(model.report_url)}</td>
+      <th>${label("Report Link", "報告書リンク")}</th>
+        <td>
+          <a href="${escapeAttribute(model.report_url)}"
+            target="_blank"
+            rel="noopener noreferrer">
+            ${label("Site Reports", "全国遺跡報告総覧")
+          </a>
+        </td>
       </tr>
       <tr>
         <th>${label("Figure", "掲載図")}</th>
