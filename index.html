@@ -231,7 +231,13 @@ function showModel(model) {
       </tr>
       <tr>
         <th>${label("Report Link", "報告書リンク")}</th>
-        <td>${escapeHTML(model.report_url)}</td>
+        <td>${
+          <a href="${escapeAttribute(model.source_url)}"
+         target="_blank"
+         rel="noopener noreferrer">
+        ${label("SiteReportsArchives", "全国遺跡報告総覧")}
+      </a>
+scapeHTML(model.report_url)}</td>
       </tr>
       <tr>
         <th>${label("Figure", "掲載図")}</th>
