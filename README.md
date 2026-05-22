@@ -4,7 +4,7 @@ test for 3D model browsing platform by GithubPages
 #### Basic Concept
 organising a simple web 3D model viewer with database for cultural heritage and museum collection  
 based on web browsers, compatibility is not tested, but at least Google Chrome and Microsoft Edge are OK  
-viewer: using Google [<model-viewer>](https://modelviewer.dev/)  
+viewer: using Google [model-viewer](https://modelviewer.dev/)  
 3D models: mesh-texture models in .glb format, should be less than 20MB per file  
 database: .csv, UTF-8  
 
