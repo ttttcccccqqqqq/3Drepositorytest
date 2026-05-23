@@ -105,15 +105,18 @@ p {
 
 <div id="viewer-area">
   <model-viewer
-    id="viewer"
-    src=""
-    camera-controls
-    auto-rotate
-    shadow-intensity="1"
-    camera-orbit="45deg 75deg 6m"
-    field-of-view="30deg"
-    ar>
-  </model-viewer>
+  id="viewer"
+  src=""
+  camera-controls
+  auto-rotate
+
+  ar
+  ar-modes="scene-viewer webxr quick-look"
+
+  ar-scale="auto"
+  xr-environment>
+
+</model-viewer>
 </div>
 
 <div id="info-area">
